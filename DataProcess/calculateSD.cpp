@@ -279,6 +279,7 @@ void DataGroup::groupingThread(int iThreadInd, weak_ptr<Data> wptrD){
 	}
 	
 	int i_vCluDataInd = -1;
+	unique_lock<mutex> lk(mutexCD);
 	for(int j=0; j<viName.size(); j++){
 		i_vCluDataInd = -1;
 		for(int i=0; i<vcdptrCluData.size(); i++){
@@ -291,11 +292,11 @@ void DataGroup::groupingThread(int iThreadInd, weak_ptr<Data> wptrD){
 			addCluData(viName[j]);
 			i_vCluDataInd = vcdptrCluData.size()-1;
 		}
-		unique_lock<mutex> lk(mutexCD);
+		
 		vcdptrCluData[i_vCluDataInd]->viInd.insert(vcdptrCluData[i_vCluDataInd]->viInd.end(), vviInd[j].begin(), vviInd[j].end());
 		vcdptrCluData[i_vCluDataInd]->atoiSum += viSum[j];
-		lk.unlock();
 	}
+	lk.unlock();
 	
 	atoiptrCpuUsed[iCupId] += 1;
 	sptrD.reset();
