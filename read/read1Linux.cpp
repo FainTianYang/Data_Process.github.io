@@ -14,26 +14,14 @@ class Reader{
 		char cptrInput[BUFFER_SIZE]; //Sub word
 		char *cptrStop; //stop location of sub word
 		char *cptrStart; //start locstion of sub word
-		vector<string> *vptrName;
 		vector< vector<float> > *vptrContent;
 		void reading(){
 			/*---------- Read file ----------*/
 			FILE *fp = fopen(strPath.c_str(), "r");
-			fgets(cptrInput, BUFFER_SIZE, fp);
-			cptrStart = cptrInput;
-			cptrStop = strchr(cptrStart,',');
-				
-			while(cptrStop != NULL){
-				memcpy(carrSub, cptrStart, strlen(cptrStart)-strlen(cptrStop));
-				carrSub[strlen(cptrStart)-strlen(cptrStop)] = 0;
-				cptrStart = cptrStop+1;//1 : skip a ','
-				cptrStop = strchr(cptrStart,',');
-				vptrName->push_back(carrSub);
+			
+			if(!fp){
+				printf("File mot exist!!\n");
 			}
-			//the last word is start to end of carrSub 
-			memcpy(carrSub, cptrStart, strlen(cptrStart));
-			carrSub[strlen(cptrStart)] = 0;
-			vptrName->push_back(carrSub);
 			
 			/*--- read another row(column) ---*/
 			while(fgets(cptrInput, BUFFER_SIZE, fp)!=NULL) {
@@ -59,22 +47,31 @@ class Reader{
 
 	public:
 		string strPath;
-		Reader(string str, vector<string> *vN, vector< vector<float> > *vC){
+		Reader(string str, vector< vector<float> > *vC){
 			strPath = str;
-			vptrName = vN;
 			vptrContent = vC;
 			reading();
 		}
 };
 
 int main( int argc, char** argv ){
-	vector<string> vColumn_name; //column name
 	vector< vector<float> > vContent; //file content
 	
-	Reader *reader1 = new Reader("./DataTest/Data/1999Sub.csv", &vColumn_name, &vContent);
+	Reader *reader1 = new Reader("/home/Data/1999Sub.csv", &vContent);
+	delete reader1;
+
 	/*---------- Show info ----------*/
 	cout<<vContent.size()<<"\n";
 	
+	cout<<"\n";
+	for(int j =0; j<10; j++){
+		cout<<"\nIndex : "<< j <<" -- ";
+		for(int i=0;i<vContent[j].size();i++){
+			cout<<vContent[j][i]<<" , ";
+		}
+	}
+
+	cout<<vContent.size()<<"\n";
 	cout<<"vContent Size 1 : "<< vContent.size() * vContent[0].size() * sizeof(float)<<endl;
 	cout<<"vContent Size 2 : "<< vContent.size() * sizeof vContent[0] <<endl;
 	cout<<"vContent Size 3 : "<< sizeof vContent <<endl;
