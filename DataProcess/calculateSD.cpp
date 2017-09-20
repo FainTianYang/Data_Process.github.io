@@ -89,6 +89,7 @@ class Reader{
 				
 				v.push_back(atoi(carrSub));
 				vviptrContent->push_back(v);
+				vviptrContent->push_back(v);
 			}
 			fclose(fp);
 		}
@@ -354,15 +355,20 @@ void DataGroup::showInfo(){
 int main( int argc, char** argv ){
 	cout << "DEBUG: main() called by process " << getpid() << " (parent: " << ::getppid() << ")" << std::endl;
 	string strPath[3] = {"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2008Sub.csv",
-						 "C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2007Sub.csv",
-						 "C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2006Sub.csv"};
+						"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2007Sub.csv",
+						"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2006Sub.csv"};
 	int iFileNum = 3;
 	
 	/*----- Read file -----*/
+	chrono::time_point<chrono::steady_clock> tpStart, tpEnd;
+	tpStart = chrono::steady_clock::now();
+	
 	shared_ptr<Data> sptrData = make_shared<Data>(Data(strPath, iFileNum));
 	weak_ptr<Data> wptrData1(sptrData);
 	sptrData->readFile();
 	
+	tpEnd = chrono::steady_clock::now();
+	printf("Time : %ld ms\n", chrono::duration_cast<std::chrono::milliseconds>(tpEnd - tpStart).count());
 	/*----- Show Data Info -----*/
 	unique_ptr<DataGroup> dgPtr1(new DataGroup(0, wptrData1, 1));
 	dgPtr1.reset();
