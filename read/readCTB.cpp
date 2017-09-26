@@ -4,14 +4,6 @@
 #include <string.h>
 #include <mutex>
 
-#ifndef CONIO_H
-#define CONIO_H
-
-int getch( void );
-int getche( void );
-
-#endif // CONIO_H
-
 using namespace std;
 
 int main()
@@ -20,7 +12,7 @@ int main()
 	start = chrono::steady_clock::now();
 	
 	ifstream ifs ;
-	ifs.open("../DataTest/Data/2000Sub.csv", ifstream::in | ifstream::binary);
+	ifs.open("/home/Data/2000Sub.csv", ifstream::in | ifstream::binary);
 
 	filebuf* pbuf = ifs.rdbuf();
 

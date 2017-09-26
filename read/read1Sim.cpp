@@ -20,7 +20,7 @@ int main( int argc, char** argv ){
 	tpStart = chrono::steady_clock::now();
 
 	/*---------- Read file ----------*/
-	FILE *fp = fopen("/home/Data/2008N.csv", "r = NULL");
+	FILE *fp = fopen("/home/Data/1996_2008Sub.csv", "r = NULL");
 			
 	if(!fp){
 		printf("File not exist!!\n");
@@ -29,24 +29,24 @@ int main( int argc, char** argv ){
 	
 	/*--- read another row(column) ---*/
 	while(fgets(cptrInput, BUFFER_SIZE, fp)!=NULL) {
-		//vector<float> v; 
+		vector<float> v; 
 		cptrStart = cptrInput;
 		cptrStop = strchr(cptrStart,',');
 				
 		while(cptrStop != NULL){
-			//memcpy(carrSub, cptrStart, strlen(cptrStart)-strlen(cptrStop));
-			//carrSub[strlen(cptrStart)-strlen(cptrStop)] = 0;
+			memcpy(carrSub, cptrStart, strlen(cptrStart)-strlen(cptrStop));
+			carrSub[strlen(cptrStart)-strlen(cptrStop)] = 0;
 			cptrStart = cptrStop+1;
 			cptrStop = strchr(cptrStart,',');
-			//v.push_back(atof(carrSub));
+			v.push_back(atof(carrSub));
 			countW++;
 		}
-		//memcpy(carrSub, cptrStart, strlen(cptrStart)-1);
-		//carrSub[strlen(cptrStart)-1] = 0;
+		memcpy(carrSub, cptrStart, strlen(cptrStart)-1);
+		carrSub[strlen(cptrStart)-1] = 0;
 				
-		//v.push_back(atof(carrSub));
+		v.push_back(atof(carrSub));
 		countW++;
-		//vContent.push_back(v);
+		vContent.push_back(v);
 	}
 	
 	fclose(fp);
@@ -56,13 +56,13 @@ int main( int argc, char** argv ){
 	printf("countW : %lld\n", countW);
 	printf("vContent.size() : %zd\n", vContent.size());
 	
-	/*
+	
 	for(int j =0; j<10; j++){
 		cout<<"\nIndex : "<< j <<" -- ";
 		for(int i=0;i<vContent[j].size();i++){
 			cout<<vContent[j][i]<<" , ";
 		}
-	}*/
+	}
 	
 	return 0;
 }
