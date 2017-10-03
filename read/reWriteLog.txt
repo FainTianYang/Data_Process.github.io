@@ -1,0 +1,126 @@
+$ ./rwW 1996Sub.csv
+BufSize : 346221335
+BufSize : 346221568
+
+Time: 4907 ms
+
+Time: 3803 ms
+
+
+$ ./rwW 1997Sub.csv
+BufSize : 351257142
+BufSize : 351257600
+
+Time: 3693 ms
+
+Time: 3526 ms
+
+
+$ ./rwW 1998Sub.csv
+BufSize : 349038619
+BufSize : 349039104
+
+Time: 3614 ms
+
+Time: 3080 ms
+
+$ ./rwW 1999Sub.csv
+BufSize : 358084630
+BufSize : 358085120
+
+Time: 3633 ms
+
+Time: 3551 ms
+
+$ ./rwW 2000Sub.csv
+BufSize : 369081576
+BufSize : 369081856
+
+Time: 4113 ms
+
+Time: 3736 ms
+
+$ ./rwW 2001Sub.csv
+BufSize : 374504755
+BufSize : 374504960
+
+Time: 3818 ms
+
+Time: 3868 ms
+
+
+$ ./rwW 2002Sub.csv
+BufSize : 336112127
+BufSize : 336112128
+
+Time: 4005 ms
+
+Time: 3314 ms
+
+$ ./rwW 2003Sub.csv
+BufSize : 425889197
+BufSize : 425889280
+
+Time: 5713 ms
+
+Time: 4138 ms
+
+$ ./rwW 2004Sub.csv
+BufSize : 453018574
+BufSize : 453018624
+
+Time: 5551 ms
+
+Time: 4724 ms
+
+
+$ ./rwW 2005Sub.csv
+BufSize : 453573387
+BufSize : 453573632
+
+Time: 7889 ms
+
+Time: 3930 ms
+
+$ ./rwW 2006Sub.csv
+BufSize : 469017676
+BufSize : 469018112
+
+Time: 6497 ms
+
+Time: 4066 ms
+
+
+$ ./rwW 2007Sub.csv
+BufSize : 488563423
+BufSize : 488563712
+
+Time: 7310 ms
+
+Time: 4623 ms
+
+
+$ ./rwW 2008Sub.csv
+BufSize : 460560560
+BufSize : 460560896
+
+Time: 6037 ms
+
+Time: 4577 ms
+
+$ ./rwW 2000_2003.csv
+BufSize : 1505587655
+BufSize : 1505587712
+
+Time: 24675 ms
+
+Time: 14574 ms
+
+
+$ ./rwW 2004_2008.csv
+BufSize : 2324733620
+BufSize : -1970233344
+
+Time: 22695 ms
+
+Time: 20367 ms
