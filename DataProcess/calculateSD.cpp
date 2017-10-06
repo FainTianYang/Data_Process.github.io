@@ -89,7 +89,6 @@ class Reader{
 				
 				v.push_back(atoi(carrSub));
 				vviptrContent->push_back(v);
-				vviptrContent->push_back(v);
 			}
 			fclose(fp);
 		}
@@ -354,11 +353,12 @@ void DataGroup::showInfo(){
 }
 int main( int argc, char** argv ){
 	cout << "DEBUG: main() called by process " << getpid() << " (parent: " << ::getppid() << ")" << std::endl;
-	string strPath[3] = {"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2008Sub.csv",
+	/*string strPath[3] = {"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2008Sub.csv",
 						"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2007Sub.csv",
 						"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2006Sub.csv"};
-	int iFileNum = 3;
-	
+	int iFileNum = 3;*/
+	string strPath[1] = {"C:/Users/chun-hsin/Desktop/C++Project/pthreadTest/DataTest/Data/2008Sub.csv"};
+	int iFileNum = 1;
 	/*----- Read file -----*/
 	chrono::time_point<chrono::steady_clock> tpStart, tpEnd;
 	tpStart = chrono::steady_clock::now();
@@ -369,7 +369,7 @@ int main( int argc, char** argv ){
 	
 	tpEnd = chrono::steady_clock::now();
 	printf("Time : %ld ms\n", chrono::duration_cast<std::chrono::milliseconds>(tpEnd - tpStart).count());
-	/*----- Show Data Info -----*/
+	/*----- Show Data Info -----
 	unique_ptr<DataGroup> dgPtr1(new DataGroup(0, wptrData1, 1));
 	dgPtr1.reset();
 	unique_ptr<DataGroup> dgPtr2(new DataGroup(0, wptrData1, 2));
@@ -377,7 +377,7 @@ int main( int argc, char** argv ){
 	unique_ptr<DataGroup> dgPtr4(new DataGroup(0, wptrData1, 4));
 	dgPtr4.reset();
 	unique_ptr<DataGroup> dgPtr8(new DataGroup(0, wptrData1, 8));
-	dgPtr8.reset();
+	dgPtr8.reset();*/
 	
 	wptrData1.reset();
 	sptrData.reset();

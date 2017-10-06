@@ -1,0 +1,29 @@
+$ ./rt
+size_t : 119537550
+
+Read Data : 2028 ms
+Split Data : 1285 ms
+vvfContent : 1048575
+~Data -- ../DataTest/Data/2008N.prn
+
+
+$ ./gB
+size_t : 119537550
+iLineNum : 524288
+lliSubBufferSize : 59768832
+
+Read Data : 31 ms
+CPU Ind : 4
+
+Read Data : 27 ms
+CPU Ind : 1
+a524288
+Split Data : 1049 ms
+a524287
+Split Data : 1114 ms
+aa 1048575
+
+Thread : 3400 ms
+vvfContent : 0
+~Data -- ../DataTest/Data/2008N.prn
+

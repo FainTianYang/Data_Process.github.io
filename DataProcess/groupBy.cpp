@@ -21,7 +21,7 @@ using namespace std;
 
 #define COLUMN_WIDTH 7
 #define COLUMN_NUMBER 14
-const int THREAD_NUM  = 1;
+const int THREAD_NUM  = 2;
 
 class Data{
 public:
@@ -76,7 +76,7 @@ void Data::Read(){
 		
 		if(i == THREAD_NUM-1 && THREAD_NUM!=1) {
 			memset(vcharBuffer[i], 0, lliSubBufferSize);
-			lliSubBufferSize = lliFileSize - THREAD_NUM-1*lliSubBufferSize;
+			lliSubBufferSize = lliFileSize - (THREAD_NUM-1)*lliSubBufferSize;
 		}
 		
 		pbuf->sgetn (vcharBuffer[i],lliSubBufferSize);
@@ -88,7 +88,7 @@ void Data::Read(){
 	}
 	end = chrono::steady_clock::now();
 	printf("\nFile Read : %ld ms\n", chrono::duration_cast<std::chrono::milliseconds> (end - start).count());
-	
+	ifs.close();
 	/*----- Split Input Data(vcharBuffer)-----*/
 	start = chrono::steady_clock::now();
 	vector<thread> threads;
